@@ -6,132 +6,174 @@
     <title>Contact Us | AI DIGITAL GURU</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #c5a059; --dark: #020c1b; --card: #112240; --text-gray: #8892b0; }
-        body { background: var(--dark); color: white; font-family: 'Inter', sans-serif; margin: 0; }
+        :root { --gold: #c5a059; --dark: #020c1b; --navy: #0a192f; --card: #112240; --slate: #8892b0; }
+        body { background: var(--dark); color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
         
-        .contact-hero { padding: 80px 5%; text-align: center; background: linear-gradient(rgba(2, 12, 27, 0.85), rgba(2, 12, 27, 0.85)), url('assets/img/contact-bg.jpg'); background-size: cover; background-position: center; border-bottom: 2px solid var(--gold); }
-        .contact-hero h1 { color: var(--gold); font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 10px; }
-        .contact-hero p { color: #ccd6f6; font-size: clamp(1rem, 4vw, 1.3rem); }
+        /* Navigation Fix */
+        header { 
+            background: rgba(10, 25, 47, 0.98); 
+            padding: 10px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 1px solid #233554; 
+            backdrop-filter: blur(10px); 
+        }
+        .logo img { height: 55px; width: auto; display: block; }
+        nav { display: flex; gap: 15px; align-items: center; }
+        nav a { color: #fff; text-decoration: none; font-size: 14px; transition: 0.3s; padding: 5px 10px; }
+        nav a:hover, nav a.active { color: var(--gold); }
+        
+        .exam-link { 
+            color: #28a745 !important; 
+            font-weight: bold; 
+            border: 1px solid #28a745; 
+            padding: 5px 12px; 
+            border-radius: 5px; 
+        }
 
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 50px 5%; }
+        /* Hero Section */
+        .contact-hero { 
+            padding: 100px 5% 60px; 
+            text-align: center; 
+            background: radial-gradient(circle at center, #112240 0%, #020c1b 100%); 
+            border-bottom: 2px solid var(--gold); 
+        }
+        .contact-hero h1 { color: var(--gold); font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 15px; }
+
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 50px 5%; }
         
-        .info-card { background: var(--card); padding: 30px; border-radius: 12px; border-left: 5px solid var(--gold); text-align: left; }
-        .info-card i { font-size: 35px; color: var(--gold); margin-bottom: 15px; }
-        .info-card h3 { color: #ccd6f6; margin-bottom: 10px; }
-        .info-card p, .info-card a { color: var(--text-gray); font-size: 15px; text-decoration: none; }
+        .info-card { background: var(--card); padding: 35px; border-radius: 15px; border-top: 4px solid var(--gold); text-align: center; transition: 0.4s; }
+        .info-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
+        .info-card i { font-size: 40px; color: var(--gold); margin-bottom: 20px; }
+        .info-card h3 { color: #ccd6f6; margin-bottom: 15px; font-size: 1.4rem; }
+        .info-card p, .info-card a { color: var(--slate); font-size: 15px; text-decoration: none; line-height: 1.6; }
         .info-card a:hover { color: var(--gold); }
 
-        .form-section { background: var(--card); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .form-section h2 { color: var(--gold); margin-bottom: 25px; text-align: center; }
+        /* Form Styling */
+        .form-section { background: var(--card); padding: 45px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 10px 40px rgba(0,0,0,0.6); margin-bottom: 60px; }
+        .form-section h2 { color: var(--gold); margin-bottom: 30px; text-align: center; font-size: 2rem; }
 
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; margin-bottom: 8px; color: #8892b0; font-size: 14px; }
+        .input-group { margin-bottom: 25px; }
+        .input-group label { display: block; margin-bottom: 10px; color: #ccd6f6; font-size: 14px; font-weight: 600; }
         .input-group input, .input-group textarea {
-            width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #233554;
+            width: 100%; padding: 14px; border-radius: 10px; border: 1px solid #233554;
             background: #0a192f; color: white; outline: none; transition: 0.3s; box-sizing: border-box;
         }
-        .input-group input:focus, .input-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(197, 160, 89, 0.2); }
+        .input-group input:focus, .input-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 15px rgba(197, 160, 89, 0.1); }
         
         .btn-submit {
-            width: 100%; padding: 15px; background: var(--gold); color: var(--dark);
-            border: none; border-radius: 8px; font-weight: bold; font-size: 16px;
-            cursor: pointer; transition: 0.3s; text-transform: uppercase;
+            width: 100%; padding: 16px; background: var(--gold); color: var(--dark);
+            border: none; border-radius: 10px; font-weight: 800; font-size: 16px;
+            cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px;
         }
-        .btn-submit:hover { background: white; transform: translateY(-3px); }
+        .btn-submit:hover { background: white; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
 
-        .map-section { padding: 50px 0; background-color: #0a192f; text-align: center; }
-        .map-section h2 { color: var(--gold); margin-bottom: 30px; font-size: 2rem; }
-        .map-frame { width: 90%; height: 400px; border: 0; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        .map-section { padding: 60px 5%; background-color: #020c1b; text-align: center; }
+        .map-frame { width: 100%; max-width: 1100px; height: 450px; border: 0; border-radius: 20px; filter: grayscale(1) invert(1) contrast(1.2); }
         
-        .social-links { text-align: center; padding: 30px 0; background: var(--dark); border-top: 1px solid #233554; }
-        .social-links a { color: var(--gold); font-size: 28px; margin: 0 15px; transition: 0.3s; }
-        .social-links a:hover { color: white; transform: scale(1.1); }
+        footer { padding: 60px 5%; background: #020c1b; border-top: 1px solid #112240; text-align: center; }
+        .social-links a { color: var(--gold); font-size: 26px; margin: 0 15px; transition: 0.3s; display: inline-block; }
+        .social-links a:hover { color: white; transform: translateY(-5px); }
 
         @media (max-width: 768px) {
-            .contact-grid { grid-template-columns: 1fr; padding: 30px 20px; }
-            .form-section { padding: 30px; }
-            .map-frame { height: 300px; width: 95%; }
-            .contact-hero { padding: 60px 20px; }
+            nav { display: none; }
+            .contact-grid { padding: 30px 20px; }
+            .form-section { padding: 30px 20px; border-radius: 0; }
+            .map-frame { height: 350px; }
         }
     </style>
 </head>
 <body>
 
-<header class="header" style="background: rgba(10, 25, 47, 0.95); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #233554;">
-    <div class="logo"><img src="assets/img/logo.png" alt="AI DIGITAL GURU" style="height: 45px;" onerror="this.src='https://via.placeholder.com/150x50?text=AI+GURU'"></div>
-    <nav id="nav">
-      <a href="index.html" style="color:white; text-decoration:none; margin-left: 20px;">Home</a>
-      <a href="services.html" style="color:white; text-decoration:none; margin-left: 20px;">Services</a>
-      <a href="courses.html" style="color:white; text-decoration:none; margin-left: 20px;">Courses</a>
-      <a href="contact.html" class="active" style="color:var(--gold); font-weight:bold; text-decoration:none; margin-left: 20px;">Contact</a>
+<header>
+    <div class="logo">
+        <a href="index.html">
+            <img src="assets/Img/logo.png" alt="AI DIGITAL GURU" onerror="this.src='https://via.placeholder.com/150x50?text=AI+GURU'">
+        </a>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="courses.html">Courses</a>
+      <a href="exam.html" class="exam-link">Online Exam</a>
+      <a href="certificate.html">Verification</a>
+      <a href="contact.html" class="active" style="color:var(--gold); font-weight:bold;">Contact</a>
     </nav>
 </header>
 
 <section class="contact-hero">
-    <h1>Connect With Us</h1>
-    <p>Your Gateway to Advanced IT Solutions & Digital Skills.</p>
+    <h1>Connect With <span>Us</span></h1>
+    <p style="color: var(--slate);">Your Gateway to Advanced IT Solutions & Digital Excellence.</p>
 </section>
 
 <div class="contact-grid">
     <div class="info-card">
         <i class="fas fa-map-marker-alt"></i>
-        <h3>Our Location</h3>
+        <h3>Head Office</h3>
         <p>Janjgir-Champa, Chhattisgarh</p>
-        <p>India</p>
+        <p>India - 495668</p>
     </div>
     <div class="info-card">
         <i class="fas fa-phone-alt"></i>
-        <h3>Call Us</h3>
+        <h3>Call / WhatsApp</h3>
         <p><a href="tel:+917047463566">+91 7047463566</a></p>
-        <p><a href="https://wa.me/917047463566" target="_blank">WhatsApp Chat</a></p>
+        <p><a href="https://wa.me/917047463566" target="_blank">Chat with Guru</a></p>
     </div>
     <div class="info-card">
         <i class="fas fa-envelope"></i>
-        <h3>Email Us</h3>
+        <h3>Support Email</h3>
         <p><a href="mailto:info@aidigitalguru.in">info@aidigitalguru.in</a></p>
-        <p>We typically respond within 24 hours.</p>
+        <p>Response within 12-24 hours.</p>
     </div>
 </div>
 
-<section class="form-section" style="max-width: 700px; margin: 50px auto; padding: 40px;">
-    <h2>Send Us a Message</h2>
-    <form action="https://formspree.io/f/myzrjrzn" method="POST">
-        <div class="input-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" placeholder="Full Name" required>
-        </div>
-        <div class="input-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="_replyto" placeholder="your@email.com" required>
-        </div>
-        <div class="input-group">
-            <label for="phone">Mobile Number</label>
-            <input type="tel" id="phone" name="phone" placeholder="+91 7047463566">
-        </div>
-        <div class="input-group">
-            <label for="message">Your Message</label>
-            <textarea id="message" name="message" rows="6" placeholder="How can we assist you?" required></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Send Enquiry</button>
-    </form>
+<section style="padding: 0 5%;">
+    <div class="form-section" style="max-width: 800px; margin: 0 auto;">
+        <h2>Send Us a Message</h2>
+        <form action="https://formspree.io/f/myzrjrzn" method="POST">
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="input-group">
+                <label>Email Address</label>
+                <input type="email" name="email" placeholder="example@gmail.com" required>
+            </div>
+            <div class="input-group">
+                <label>WhatsApp Number</label>
+                <input type="tel" name="phone" placeholder="+91 00000 00000">
+            </div>
+            <div class="input-group">
+                <label>How can we help?</label>
+                <textarea name="message" rows="5" placeholder="Write your message here..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Send Message to Guru</button>
+        </form>
+    </div>
 </section>
 
 <section class="map-section">
-    <h2>Find Us on Map</h2>
+    <h2 style="color: var(--gold); margin-bottom: 30px;">Locate Our Institute</h2>
     <iframe class="map-frame" 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118742.86872583271!2d82.56947700588667!3d22.01655079361833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a27f67756f7e801%3A0x6331a9829f7f02b3!2sJanjgir%2C%20Chhattisgarh!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118830.242861536!2d82.5857161!3d22.0163353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2796e622b796e3%3A0xc3f982998246f39c!2sJanjgir%2C%20Chhattisgarh!5e0!3m2!1sen!2sin!4v1700000000000" 
         allowfullscreen="" loading="lazy"></iframe>
 </section>
 
-<footer class="footer" style="background: var(--dark); padding: 40px; text-align: center; border-top: 1px solid #233554;">
-    <div class="social-links" style="margin-bottom: 20px;">
+<footer>
+    <div class="social-links">
         <a href="https://youtube.com/@aidigitalguru?si=sWRwXdLesNvIj2E0" target="_blank"><i class="fab fa-youtube"></i></a>
         <a href="https://www.facebook.com/share/14Vbd1Sdkzs/" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="https://www.instagram.com/guruaidigital?igsh=ZTl3emx4eTJscWxi" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://wa.me/917047463566" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
-    <p style="color: var(--text-gray); font-size: 14px;">© 2025 AI DIGITAL GURU | UDYAM-CG-06-0006341</p>
+    <p style="color: var(--gold); font-weight: bold; margin-top: 20px;">MSME: UDYAM-CG-06-0006341</p>
+    <p style="color: var(--slate); font-size: 13px; margin-top: 10px;">© 2025 AI DIGITAL GURU | Professional IT Training & Solutions</p>
 </footer>
 
 </body>
