@@ -1,0 +1,20 @@
+<div class="login-box" style="max-width: 400px; margin: 100px auto; background: #112240; padding: 40px; border-radius: 10px;">
+    <h2 style="text-align: center; color: var(--accent-gold);">Admin Secure Access</h2>
+    <input type="text" id="user" placeholder="Admin ID" class="form-input">
+    <input type="password" id="pass" placeholder="Secret Key" class="form-input">
+    <button onclick="handleLogin()" class="btn-premium" style="width: 100%; margin-top: 20px;">Login System</button>
+</div>
+
+<script>
+function handleLogin() {
+    const u = document.getElementById('user').value;
+    const p = document.getElementById('pass').value;
+    
+    if(u === "admin@aidigital" && p === "Guru@2025") {
+        localStorage.setItem('isAdmin', 'true');
+        window.location.href = 'dashboard.html';
+    } else {
+        alert("Access Denied: Wrong Credentials");
+    }
+}
+</script>

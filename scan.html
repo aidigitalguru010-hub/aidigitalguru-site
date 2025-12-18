@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Scan QR | AI DIGITAL GURU</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body{
+    margin:0;
+    background:#020b1a;
+    color:#fff;
+    font-family:Arial;
+    text-align:center;
+  }
+  h1{
+    color:#00c3ff;
+    margin:15px 0;
+  }
+  #reader{
+    width:100%;
+    max-width:420px;
+    margin:auto;
+    border:2px solid #00c3ff;
+    border-radius:10px;
+    overflow:hidden;
+  }
+  p{
+    font-size:14px;
+    opacity:0.9;
+  }
+</style>
+</head>
+<body>
+
+<h1>QR Code Verification</h1>
+<p>Scan certificate QR code to verify</p>
+
+<div id="reader"></div>
+
+<p id="status"></p>
+
+<!-- QR Scanner Library -->
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+<script>
+function onScanSuccess(decodedText){
+  document.getElementById("status").innerText =
+    "QR detected. Redirecting...";
+  window.location.href = decodedText;
+}
+
+new Html5Qrcode("reader").start(
+  { facingMode: "environment" },
+  { fps: 10, qrbox: 250 },
+  onScanSuccess
+);
+</script>
+
+</body>
+</html>

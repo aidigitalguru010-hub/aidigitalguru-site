@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | AI DIGITAL GURU</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body style="background: #020c1b;">
+
+<header>
+    <div class="logo">AI DIGITAL GURU <span style="font-size: 12px; color: var(--accent-gold);">Admin</span></div>
+    <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="view-certificates.html">Records</a>
+        <a href="#" onclick="logout()" class="btn-premium" style="padding: 5px 15px; border-color: red; color: red;">Logout</a>
+    </nav>
+</header>
+
+<section class="section" style="padding: 40px 8%;">
+    <h2 style="color: var(--accent-gold);">Welcome, Director</h2>
+    <div class="grid-container">
+        <div class="service-card" style="text-align: center;">
+            <i class="fas fa-plus-circle fa-3x" style="color: var(--accent-blue); margin-bottom: 15px;"></i>
+            <h3>New Certificate</h3>
+            <p>Issue a new digital certificate to a student.</p>
+            <a href="add-certificate.html" class="btn-premium" style="display: block; margin-top: 15px;">Add Student</a>
+        </div>
+
+        <div class="service-card" style="text-align: center;">
+            <i class="fas fa-users fa-3x" style="color: var(--accent-gold); margin-bottom: 15px;"></i>
+            <h3>Total Students</h3>
+            <h2 id="totalCount" style="font-size: 3rem; margin: 10px 0;">0</h2>
+            <a href="view-certificates.html" style="color: var(--text-gray);">View All Records</a>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Security Check
+    if(localStorage.getItem('isAdmin') !== 'true') { window.location.href = 'login.html'; }
+
+    // Update Counter
+    const certs = JSON.parse(localStorage.getItem('adg_certificates')) || [];
+    document.getElementById('totalCount').innerText = certs.length;
+
+    function logout() {
+        localStorage.removeItem('isAdmin');
+        window.location.href = 'login.html';
+    }
+</script>
+</body>
+</html>

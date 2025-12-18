@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Issue Certificate | AI DIGITAL GURU</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: var(--accent-gold); }
+        input { width: 100%; padding: 12px; background: #0a192f; border: 1px solid #112240; color: white; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+<section class="section" style="max-width: 600px; margin: auto;">
+    <div class="service-card">
+        <h2 style="text-align: center; color: var(--accent-gold);">Certificate Data Entry</h2>
+        <hr style="border: 0.5px solid #112240; margin: 20px 0;">
+        
+        <form id="certForm">
+            <div class="form-group">
+                <label>Student Full Name</label>
+                <input type="text" id="sName" placeholder="e.g. Rahul Kumar" required>
+            </div>
+            <div class="form-group">
+                <label>Course Name</label>
+                <input type="text" id="sCourse" placeholder="e.g. Web Development" required>
+            </div>
+            <div class="form-group">
+                <label>Certificate ID</label>
+                <input type="text" id="sId" placeholder="e.g. ADG-1001" required>
+            </div>
+            <div class="form-group">
+                <label>Issue Date</label>
+                <input type="date" id="sDate" required>
+            </div>
+            <button type="submit" class="btn-premium" style="width: 100%;">Save & Generate Certificate</button>
+            <a href="dashboard.html" style="display: block; text-align: center; margin-top: 15px; color: var(--text-gray);">Back to Dashboard</a>
+        </form>
+    </div>
+</section>
+
+<script>
+    if(localStorage.getItem('isAdmin') !== 'true') { window.location.href = 'login.html'; }
+
+    document.getElementById('certForm').onsubmit = function(e) {
+        e.preventDefault();
+        
+        const newCert = {
+            name: document.getElementById('sName').value,
+            course: document.getElementById('sCourse').value,
+            certId: document.getElementById('sId').value.toUpperCase(),
+            date: document.getElementById('sDate').value
+        };
+
+        // Save to LocalStorage
+        let certs = JSON.parse(localStorage.getItem('adg_certificates')) || [];
+        
+        // Check if ID already exists
+        if(certs.some(c => c.certId === newCert.certId)) {
+            alert("This Certificate ID already exists!");
+            return;
+        }
+
+        certs.push(newCert);
+        localStorage.setItem('adg_certificates', JSON.stringify(certs));
+
+        alert("Certificate successfully issued!");
+        window.location.href = 'view-certificates.html';
+    };
+</script>
+</body>
+</html>

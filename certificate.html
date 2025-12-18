@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Certificate Verification</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<h2>Verify Certificate</h2>
+
+<input id="cid" placeholder="ADG-1001">
+<button onclick="verify()">Verify</button>
+
+<div id="res"></div>
+
+<script>
+const API="https://script.google.com/macros/s/AKfycby5c8X5Mw-Tc8RvpkDtga4MDf3cB-p7raS3WJ82WdImdhtxyn7zXtq5to9F7v5dWuAmsA/exec";
+
+function verify(){
+  fetch(API+"?id="+cid.value)
+  .then(r=>r.json())
+  .then(d=>{
+    if(d.status==="valid"){
+      res.innerHTML=`✔ VALID<br>
+      Name:${d.name}<br>
+      Course:${d.course}<br>
+      MSME: UDYAM-CG-06-0006341`;
+    } else {
+      res.innerHTML="❌ Invalid Certificate";
+    }
+  });
+}
+</script>
+
+</body>
+</html>

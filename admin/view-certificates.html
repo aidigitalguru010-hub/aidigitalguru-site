@@ -1,0 +1,44 @@
+<section class="section">
+    <div class="service-card" style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; color: white;">
+            <thead>
+                <tr style="border-bottom: 2px solid var(--accent-gold); text-align: left;">
+                    <th style="padding: 15px;">ID</th>
+                    <th>Student</th>
+                    <th>Course</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="certTableBody">
+                </tbody>
+        </table>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+    const certs = JSON.parse(localStorage.getItem('adg_certificates')) || [];
+    const container = document.getElementById('certTableBody');
+
+    certs.forEach((c, index) => {
+        container.innerHTML += `
+            <tr style="border-bottom: 1px solid #112240;">
+                <td style="padding: 15px;">${c.certId}</td>
+                <td>${c.name}</td>
+                <td>${c.course}</td>
+                <td>${c.date}</td>
+                <td>
+                    <button onclick="downloadPDF(${index})" class="btn-premium" style="font-size: 10px; padding: 5px 10px;">Download PDF</button>
+                </td>
+            </tr>
+        `;
+    });
+
+    // Isme wahi PDF generator logic aayega jo maine pehle diya tha
+    function downloadPDF(index) {
+        const data = certs[index];
+        alert("Generating PDF for " + data.name + "... (Make sure jspdf is linked)");
+        // Call your PDF function here
+    }
+</script>
