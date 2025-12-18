@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel | Issue Certificate</title>
+    <style>
+        body { background: #0a192f; color: white; font-family: sans-serif; padding: 20px; }
+        .admin-card { max-width: 500px; margin: auto; background: #112240; padding: 25px; border-radius: 10px; border: 1px solid #c5a059; }
+        input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #233554; background: #020c1b; color: white; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #c5a059; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="admin-card">
+    <h2 style="color: #c5a059; text-align:center;">Issue New Certificate</h2>
+    <input type="text" id="certID" placeholder="Certificate ID (Ex: ADG-1001)">
+    <input type="text" id="stuName" placeholder="Student Full Name">
+    <input type="text" id="courseName" placeholder="Course Name">
+    <input type="date" id="issueDate">
+    <button onclick="saveData()">Issue Now</button>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+<script>
+  // Firebase Configuration (Yahan apne Firebase ki settings paste karein)
+  const firebaseConfig = {
+    databaseURL: "YOUR_FIREBASE_URL_HERE"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const database = firebase.database();
+
+  function saveData() {
+    const id = document.getElementById('certID').value;
+    const name = document.getElementById('stuName').value;
+    const course = document.getElementById('courseName').value;
+    const date = document.getElementById('issueDate').value;
+
+    if(id && name) {
+        database.ref('certificates/' + id).set({
+            name: name,
+            course: course,
+            date: date
+        }).then(() => {
+            alert("Certificate Issued Successfully!");
+            location.reload();
+        });
+    } else {
+        alert("Please fill all details!");
+    }
+  }
+</script>
+</body>
+</html>
+#c31111

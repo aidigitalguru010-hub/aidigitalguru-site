@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam Portal | AI DIGITAL GURU</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --gold: #c5a059; --dark: #020c1b; --card: #112240; --slate: #8892b0; }
+        body { background: var(--dark); color: white; font-family: 'Inter', sans-serif; margin: 0; }
+
+        /* Login Box Styles */
+        #login-section { display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .login-box { background: var(--card); padding: 40px; border-radius: 15px; border: 1px solid var(--gold); width: 90%; max-width: 400px; text-align: center; }
+        
+        /* Exam Box Styles */
+        #exam-section { display: none; padding: 40px 5%; }
+        .exam-container { max-width: 800px; margin: 0 auto; background: var(--card); padding: 30px; border-radius: 15px; border: 1px solid var(--gold); }
+        
+        .question { margin-bottom: 25px; border-bottom: 1px solid #233554; padding-bottom: 15px; text-align: left; }
+        .options label { display: block; margin: 10px 0; color: var(--slate); cursor: pointer; }
+        
+        input[type="email"], input[type="password"], input[type="text"] {
+            width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #233554; background: #0a192f; color: white; box-sizing: border-box;
+        }
+
+        #result-section { display: none; text-align: center; margin-top: 30px; padding: 20px; border-top: 2px dashed var(--gold); }
+        canvas { display: none; }
+    </style>
+</head>
+<body>
+
+<section id="login-section">
+    <div class="login-box">
+        <h2 style="color: var(--gold);">Student Login</h2>
+        <p style="color: var(--slate); font-size: 14px;">Apni Student ID se login karein</p>
+        <input type="email" id="loginID" placeholder="Email ID (e.g. stu01@aidg.com)">
+        <input type="password" id="loginPass" placeholder="Password">
+        <button onclick="loginStudent()" class="btn-premium btn-gold" style="width:100%; border:none; padding:14px; margin-top:10px; cursor:pointer;">Login to Exam</button>
+    </div>
+</section>
+
+<section id="exam-section">
+    <div class="exam-container">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h2 style="color: var(--gold);">Final Course Exam</h2>
+            <span id="userDisplay" style="color: var(--slate); font-size: 14px;"></span>
+        </div>
+        <hr style="border: 0.5px solid #233554; margin-bottom: 30px;">
+
+        <form id="examForm">
+            <div class="question">
+                <p>Confirm Name (As required on Certificate):</p>
+                <input type="text" id="stuName" required placeholder="Your Full Name">
+            </div>
+
+            <div class="question">
+                <p>1. Computer ka dimag kise kaha jata hai?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="a"> RAM</label>
+                    <label><input type="radio" name="q1" value="b"> CPU</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>2. Internet par website dekhne ke liye kya chahiye?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="a"> Browser</label>
+                    <label><input type="radio" name="q2" value="b"> Keyboard</label>
+                </div>
+            </div>
+
+            <button type="button" onclick="checkResult()" class="btn-premium btn-gold" style="width:100%; padding:15px; border:none; cursor:pointer;">Submit Exam</button>
+        </form>
+
+        <div id="result-section">
+            <h3 id="score-text" style="color: white; font-size: 24px;"></h3>
+            <p id="msg-text" style="color: var(--slate);"></p>
+            <div id="cert-area" style="display: none; margin-top: 20px;">
+                <p style="color: #28a745; font-weight: bold;">🎉 Congratulations! You Passed.</p>
+                <button onclick="generateAutoCert()" class="btn-premium btn-outline" style="border-color: #28a745; color: #28a745;">Download Certificate</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<canvas id="certCanvas" width="1000" height="700"></canvas>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<script>
+    // 1. Firebase Setup (Aapka Config yahan aayega)
+    const firebaseConfig = {
+        apiKey: "AIzaSy...", 
+        authDomain: "aidigitalguru.firebaseapp.com",
+        projectId: "aidigitalguru",
+        storageBucket: "aidigitalguru.appspot.com",
+        messagingSenderId: "...",
+        appId: "..."
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // 2. Login Logic
+    function loginStudent() {
+        const email = document.getElementById('loginID').value;
+        const pass = document.getElementById('loginPass').value;
+
+        firebase.auth().signInWithEmailAndPassword(email, pass)
+        .then((user) => {
+            document.getElementById('login-section').style.display = "none";
+            document.getElementById('exam-section').style.display = "block";
+            document.getElementById('userDisplay').innerText = "Logged in as: " + email;
+        })
+        .catch((error) => {
+            alert("Galt ID ya Password! Apne teacher se sampark karein.");
+        });
+    }
+
+    // 3. Exam Result Logic
+    function checkResult() {
+        let score = 0;
+        const q1 = document.querySelector('input[name="q1"]:checked');
+        const q2 = document.querySelector('input[name="q2"]:checked');
+
+        if(q1 && q1.value === "b") score++;
+        if(q2 && q2.value === "a") score++;
+
+        document.getElementById('result-section').style.display = "block";
+        document.getElementById('score-text').innerText = `Your Score: ${score}/2`;
+
+        if(score >= 1) { // 50% Passing
+            document.getElementById('cert-area').style.display = "block";
+            document.getElementById('msg-text').innerText = "Aapne safaltapurvak exam clear kar liya hai!";
+        } else {
+            document.getElementById('msg-text').innerText = "Aap pass nahi ho paye. Kripya fir se koshish karein.";
+        }
+    }
+
+    // 4. Certificate Generation
+    function generateAutoCert() {
+        const canvas = document.getElementById('certCanvas');
+        const ctx = canvas.getContext('2d');
+        const name = document.getElementById('stuName').value;
+        const img = new Image();
+
+        img.src = 'assets/img/1000399668.png'; // Aapka Blank Template
+        img.onload = function() {
+            ctx.drawImage(img, 0, 0, 1000, 700);
+            
+            // Name Drawing
+            ctx.font = 'bold 55px cursive';
+            ctx.fillStyle = '#1a1a1a';
+            ctx.textAlign = 'center';
+            ctx.fillText(name, 500, 360); 
+
+            // Date Drawing
+            const today = new Date().toLocaleDateString('en-GB');
+            ctx.font = '22px Arial';
+            ctx.fillText("Date: " + today, 500, 520);
+
+            const link = document.createElement('a');
+            link.download = `${name}_Certificate.png`;
+            link.href = canvas.toDataURL();
+            link.click();
+        };
+    }
+</script>
+</body>
+</html>

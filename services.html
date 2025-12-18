@@ -2,111 +2,139 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Services | AI DIGITAL GURU</title>
+  <title>IT Solutions & Deployment | AI DIGITAL GURU</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AI DIGITAL GURU IT Services, Courses and Training">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root { --gold: #c5a059; --dark-blue: #020c1b; --card-bg: #112240; --text-gray: #8892b0; --accent-blue: #007bff; }
+    body { background-color: var(--dark-blue); font-family: 'Inter', sans-serif; color: white; margin: 0; overflow-x: hidden; }
+    
+    .section-header { padding: 80px 5% 40px; text-align: center; background: linear-gradient(rgba(2,12,27,0.9), rgba(2,12,27,0.9)), url('https://www.transparenttextures.com/patterns/circuit-board.png'); }
+    .section-header h1 { font-size: clamp(2rem, 5vw, 3rem); color: var(--gold); margin-bottom: 15px; }
+
+    .category-title { color: var(--gold); padding: 0 8%; margin-top: 50px; border-left: 5px solid var(--gold); margin-left: 5%; font-size: 1.5rem; }
+
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 30px 5% 60px; }
+    
+    .card { background: var(--card-bg); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; position: relative; overflow: hidden; }
+    .card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    
+    .card i { font-size: 40px; color: var(--gold); margin-bottom: 20px; display: block; }
+    .card h3 { color: #ccd6f6; font-size: 1.4rem; margin-bottom: 12px; }
+    .card p { color: var(--text-gray); font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+    
+    .feature-list { list-style: none; padding: 0; margin-bottom: 25px; }
+    .feature-list li { font-size: 13px; color: var(--gold); margin-bottom: 8px; }
+    .feature-list li i { font-size: 12px; display: inline; margin-right: 8px; }
+
+    .btn-action { display: block; text-align: center; padding: 12px; background: transparent; color: var(--gold); border: 1px solid var(--gold); text-decoration: none; border-radius: 6px; font-weight: bold; transition: 0.3s; }
+    .btn-action:hover { background: var(--gold); color: var(--dark-blue); }
+
+    /* Specific accent colors for deployment */
+    .deploy-web { border-bottom: 4px solid var(--accent-blue); }
+    .deploy-app { border-bottom: 4px solid #28a745; }
+    .deploy-soft { border-bottom: 4px solid #f39c12; }
+
+    @media (max-width: 768px) {
+      .cards-grid { grid-template-columns: 1fr; padding: 20px; }
+      nav { display: none; } /* Mobile menu handling would go here */
+    }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="logo">AI DIGITAL GURU</div>
-  <nav id="nav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html" class="active">Services</a>
-    <a href="courses.html">Courses</a>
-    <a href="buy-sell.html">Buy & Sell</a>
-    <a href="certificate.html">Certificate</a>
-    <a href="contact.html">Contact</a>
+<header class="header" style="background: rgba(10, 25, 47, 0.95); position: sticky; top: 0; z-index: 1000; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #233554;">
+  <div class="logo"><img src="assets/img/logo.png" alt="AI DIGITAL GURU" style="height: 45px;"></div>
+  <nav id="nav" style="display: flex; gap: 20px;">
+    <a href="index.html" style="color:white; text-decoration:none;">Home</a>
+    <a href="services.html" style="color:var(--gold); font-weight:bold; text-decoration:none;">Services</a>
+    <a href="courses.html" style="color:white; text-decoration:none;">Courses</a>
+    <a href="certificate.html" style="color:white; text-decoration:none;">Verification</a>
+    <a href="contact.html" style="color:white; text-decoration:none;">Contact</a>
   </nav>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </header>
 
-<!-- SERVICES -->
-<section class="section">
-  <h1>Our Services & Courses</h1>
-  <p>Professional IT Services and Practical Computer Courses</p>
-
-  <div class="cards">
-
-    <!-- IT SERVICES -->
-    <div class="card">
-      <h3>Website Development</h3>
-      <p>Responsive & professional business websites</p>
-      <button class="btn" onclick="bookNow()">Book Now</button>
-    </div>
-
-    <div class="card">
-      <h3>Mobile Application Development</h3>
-      <p>Android app development solutions</p>
-      <button class="btn" onclick="bookNow()">Book Now</button>
-    </div>
-
-    <div class="card">
-      <h3>PC Software Development</h3>
-      <p>Custom desktop software solutions</p>
-      <button class="btn" onclick="bookNow()">Book Now</button>
-    </div>
-
-    <div class="card">
-      <h3>WhatsApp Bot Development</h3>
-      <p>Automated WhatsApp chatbot services</p>
-      <button class="btn" onclick="bookNow()">Book Now</button>
-    </div>
-
-    <div class="card">
-      <h3>Telegram Bot Development</h3>
-      <p>Smart Telegram automation bots</p>
-      <button class="btn" onclick="bookNow()">Book Now</button>
-    </div>
-
-    <div class="card">
-      <h3>Second-hand Laptop / PC</h3>
-      <p>Buy & sell old laptops and PCs</p>
-      <button class="btn" onclick="bookNow()">Book Now</button>
-    </div>
-
-    <!-- COURSES -->
-    <div class="card">
-      <h3>Python Programming</h3>
-      <p>Beginner to Advanced • Certificate Included</p>
-      <button class="btn" onclick="enrollNow()">Enroll Now</button>
-    </div>
-
-    <div class="card">
-      <h3>C++ Programming</h3>
-      <p>Logic building & fundamentals • Certificate</p>
-      <button class="btn" onclick="enrollNow()">Enroll Now</button>
-    </div>
-
-    <div class="card">
-      <h3>Java Programming</h3>
-      <p>Core Java training • Certificate</p>
-      <button class="btn" onclick="enrollNow()">Enroll Now</button>
-    </div>
-
-    <div class="card">
-      <h3>HTML & Web Design</h3>
-      <p>Website design basics • Certificate</p>
-      <button class="btn" onclick="enrollNow()">Enroll Now</button>
-    </div>
-
-    <div class="card">
-      <h3>Ethical Hacking (Basic)</h3>
-      <p>Cyber security fundamentals • Certificate</p>
-      <button class="btn" onclick="enrollNow()">Enroll Now</button>
-    </div>
-
-  </div>
+<section class="section-header">
+  <h1>IT Solutions & Deployment</h1>
+  <p>End-to-End Technology Services for Your Digital Growth</p>
 </section>
 
-<!-- FOOTER -->
+<h2 class="category-title">Software & App Deployment</h2>
+<div class="cards-grid">
+    
+    <div class="card deploy-web">
+      <i class="fas fa-server"></i>
+      <h3>Website Deployment</h3>
+      <p>Aapki website ko AWS, Firebase ya Private VPS par live deploy karna. SSL aur Domain setup shamil hai.</p>
+      <ul class="feature-list">
+        <li><i class="fas fa-check-circle"></i> Cloud Hosting Setup</li>
+        <li><i class="fas fa-check-circle"></i> Custom Domain Mapping</li>
+      </ul>
+      <a href="https://wa.me/917047463566?text=I'm interested in Website Deployment" class="btn-action">Deploy Now</a>
+    </div>
+
+    <div class="card deploy-app">
+      <i class="fas fa-rocket"></i>
+      <h3>Mobile App Deployment</h3>
+      <p>Android (APK/AAB) ko Google Play Store aur iOS ko App Store par live publish karne ki professional service.</p>
+      <ul class="feature-list">
+        <li><i class="fas fa-check-circle"></i> Play Console Publishing</li>
+        <li><i class="fas fa-check-circle"></i> App Store Optimization</li>
+      </ul>
+      <a href="https://wa.me/917047463566?text=I'm interested in App Deployment" class="btn-action">Publish App</a>
+    </div>
+
+    <div class="card deploy-soft">
+      <i class="fas fa-box-open"></i>
+      <h3>All PC Software</h3>
+      <p>Professional billing, accounting, aur office software solutions. Genuine keys aur full support ke saath.</p>
+      <ul class="feature-list">
+        <li><i class="fas fa-check-circle"></i> Original License Keys</li>
+        <li><i class="fas fa-check-circle"></i> One-click Installation</li>
+      </ul>
+      <a href="https://wa.me/917047463566?text=I want to buy/install PC Software" class="btn-action">Get Software</a>
+    </div>
+
+</div>
+
+<h2 class="category-title">Core IT Services</h2>
+<div class="cards-grid">
+    <div class="card">
+      <i class="fas fa-code-branch"></i>
+      <h3>Custom Software</h3>
+      <p>Business automation aur inventory management ke liye customized software development.</p>
+      <a href="https://wa.me/917047463566?text=I'm interested in Custom Software" class="btn-action">Enquire Now</a>
+    </div>
+
+    <div class="card">
+      <i class="fab fa-whatsapp"></i>
+      <h3>WhatsApp Automation</h3>
+      <p>AI based WhatsApp bots jo aapke business ki enquiry ko 24/7 handle karenge.</p>
+      <a href="https://wa.me/917047463566?text=I want to build a WhatsApp Bot" class="btn-action">Create Bot</a>
+    </div>
+
+    <div class="card">
+      <i class="fas fa-laptop-code"></i>
+      <h3>IT Training (DCA/Python)</h3>
+      <p>Professional training with MSME certified verification for students and job seekers.</p>
+      <a href="courses.html" class="btn-action">View Courses</a>
+    </div>
+</div>
+
 <footer class="footer">
-  <p>© AI DIGITAL GURU | All Rights Reserved</p>
+  <div class="social-links" style="margin-bottom: 20px;">
+    <a href="https://youtube.com/@aidigitalguru?si=sWRwXdLesNvIj2E0" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.facebook.com/share/14Vbd1Sdkzs/" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/guruaidigital?igsh=ZTl3emx4eTJscWxi" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/917047463566" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <p style="color: var(--gold); font-weight: bold;">MSME: UDYAM-CG-06-0006341</p>
+  <p style="color: var(--text-gray); font-size: 12px;">© 2025 AI DIGITAL GURU | Janjgir-Champa, Chhattisgarh</p>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script>
+    // Simple Mobile Menu Toggle logic can be added here
+</script>
 </body>
 </html>

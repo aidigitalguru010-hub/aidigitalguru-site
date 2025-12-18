@@ -3,36 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI DIGITAL GURU | Smart IT Solutions</title>
+    <title>AI DIGITAL GURU | Smart IT Solutions & Digital Store</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #c5a059; --dark: #020c1b; --navy: #0a192f; --card: #112240; --slate: #8892b0; }
+        body { background: var(--dark); color: white; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        
+        /* Navigation Fix */
+        header { background: rgba(10, 25, 47, 0.95); padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #233554; backdrop-filter: blur(10px); }
+        nav { display: flex; gap: 20px; align-items: center; }
+        nav a { color: #fff; text-decoration: none; font-size: 14px; transition: 0.3s; }
+        nav a:hover, nav a.active { color: var(--gold); }
+        
+        /* Exam Link Style */
+        .exam-link { color: #28a745 !important; font-weight: bold; border: 1px solid #28a745; padding: 5px 12px; border-radius: 5px; transition: 0.3s; }
+        .exam-link:hover { background: #28a745; color: white !important; }
+
+        /* Hero Section */
+        .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(circle at center, #112240 0%, #020c1b 100%); padding: 40px 20px; }
+        .hero h1 { font-size: clamp(2.5rem, 10vw, 5rem); margin: 0; font-weight: 800; }
+        .hero p { color: var(--slate); font-size: clamp(1rem, 4vw, 1.2rem); max-width: 700px; margin: 20px 0 40px; }
+        
+        .btn-container { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; width: 100%; }
+        .btn-premium { padding: 14px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; min-width: 180px; text-align: center; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        
+        /* Button Colors */
+        .btn-gold { background: var(--gold); color: var(--dark); border: 2px solid var(--gold); }
+        .btn-outline { background: transparent; color: var(--gold); border: 2px solid var(--gold); }
+        .btn-exam { background: transparent; color: #28a745; border: 2px solid #28a745; box-shadow: 0 0 15px rgba(40, 167, 69, 0.1); }
+        
+        .btn-premium:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); filter: brightness(1.2); }
+
+        /* Store Cards */
+        .section-title { text-align: center; margin-bottom: 50px; padding: 0 20px; }
+        .section-title h2 { color: var(--gold); font-size: 2.5rem; margin-bottom: 10px; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 5% 80px; }
+        
+        .store-card { background: var(--card); padding: 35px; border-radius: 20px; border: 1px solid #233554; transition: 0.4s; text-align: center; }
+        .store-card:hover { transform: translateY(-10px); border-color: var(--gold); }
+        .store-card i { font-size: 50px; color: var(--gold); margin-bottom: 20px; }
+        .store-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #ccd6f6; }
+        .store-card p { color: var(--slate); font-size: 14px; line-height: 1.6; margin-bottom: 25px; }
+        .price-tag { font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 20px; display: block; }
+
+        footer { padding: 60px 5%; background: #020c1b; border-top: 1px solid #112240; text-align: center; }
+        .social-icons a { color: var(--gold); font-size: 24px; margin: 0 15px; transition: 0.3s; }
+        .social-icons a:hover { color: white; }
+
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            nav { display: none; }
+            .btn-container { flex-direction: column; align-items: center; }
+            .btn-premium { width: 90%; }
+        }
+    </style>
 </head>
 <body>
 
 <header>
     <div class="logo">
-        <img src="1000390597.jpg" alt="AI DIGITAL GURU">
+        <img src="assets/img/logo.png" alt="AI DIGITAL GURU" style="height: 50px;" onerror="this.src='https://via.placeholder.com/150x50?text=AI+GURU'">
     </div>
     <nav>
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="services.html">Services</a>
         <a href="courses.html">Courses</a>
+        <a href="exam.html" class="exam-link">Online Exam</a> 
         <a href="certificate.html">Verification</a>
-        <a href="admin/login.html" class="btn-premium" style="padding: 5px 15px;">Admin</a>
+        <a href="contact.html">Contact</a>
     </nav>
 </header>
 
 <section class="hero">
-    <h1>AI DIGITAL GURU</h1>
-    <p style="color: var(--text-gray); font-size: 1.2rem;">Next-Gen IT Solutions & Digital Education</p>
-    <div style="margin-top: 30px;">
-        <a href="certificate.html" class="btn-premium">Verify Certificate</a>
-        <a href="courses.html" class="btn-premium" style="margin-left: 15px; border-color: var(--accent-blue); color: var(--accent-blue);">Explore Courses</a>
+    <h1>AI DIGITAL <span style="color: var(--gold);">GURU</span></h1>
+    <p>Professional Website Deployment, Mobile App Publishing, and Premium PC Software Solutions. We turn your digital ideas into reality.</p>
+    
+    <div class="btn-container">
+        <a href="certificate.html" class="btn-premium btn-gold">
+            <i class="fas fa-certificate"></i> Verify Certificate
+        </a>
+        
+        <a href="exam.html" class="btn-premium btn-exam">
+            <i class="fas fa-user-graduate"></i> Start Online Exam
+        </a>
+
+        <a href="services.html" class="btn-premium btn-outline">
+            <i class="fas fa-th-list"></i> Explore Services
+        </a>
     </div>
 </section>
 
-<footer style="text-align: center; padding: 40px; border-top: 1px solid #112240;">
-    <p>UDYAM REGISTRATION: <strong>UDYAM-CG-06-0006341</strong></p>
-    <p style="color: var(--text-gray); font-size: 13px;">© 2025 AI DIGITAL GURU. All Rights Reserved.</p>
+<section id="solutions">
+    <div class="section-header section-title">
+        <h2>Digital Solutions Store</h2>
+        <p style="color: var(--slate);">Premium IT Services & Software at Your Fingertips</p>
+    </div>
+
+    <div class="grid-container">
+        <div class="store-card">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <h3>Web Deployment</h3>
+            <p>Aapki website ko AWS/Firebase par live hosting, SSL security aur Custom Domain setup ke saath deploy karein.</p>
+            <span class="price-tag">Global Hosting</span>
+            <a href="https://wa.me/917047463566?text=I want to deploy my Website" class="btn-premium btn-outline" style="width: 100%;">Get Started</a>
+        </div>
+
+        <div class="store-card" style="border-bottom: 4px solid #28a745;">
+            <i class="fab fa-google-play" style="color: #28a745;"></i>
+            <h3>App Publishing</h3>
+            <p>Android Apps (AAB/APK) ko Google Play Store par professional tarike se publish aur optimize karwayein.</p>
+            <span class="price-tag">Play Store Live</span>
+            <a href="https://wa.me/917047463566?text=I want to publish my App" class="btn-premium btn-outline" style="width: 100%; color: #28a745; border-color: #28a745;">Enquire Now</a>
+        </div>
+
+        <div class="store-card" style="border-bottom: 4px solid #f39c12;">
+            <i class="fas fa-laptop-code" style="color: #f39c12;"></i>
+            <h3>All PC Software</h3>
+            <p>Genuine License Keys for MS Office, Antivirus, Graphics Tools aur customized Billing Software.</p>
+            <span class="price-tag">Starting ₹499</span>
+            <a href="https://wa.me/917047463566?text=I want to buy PC Software" class="btn-premium btn-outline" style="width: 100%; color: #f39c12; border-color: #f39c12;">Buy Now</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="social-icons" style="margin-bottom: 30px;">
+        <a href="https://youtube.com/@aidigitalguru?si=sWRwXdLesNvIj2E0" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/share/14Vbd1Sdkzs/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/guruaidigital?igsh=ZTl3emx4eTJscWxi" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/917047463566" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p style="color: var(--gold); font-weight: bold; letter-spacing: 1px;">MSME: UDYAM-CG-06-0006341</p>
+    <p style="color: var(--slate); font-size: 13px; margin-top: 10px;">© 2025 AI DIGITAL GURU | Professional IT Agency</p>
 </footer>
 
 </body>

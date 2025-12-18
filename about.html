@@ -2,47 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About | AI DIGITAL GURU</title>
+  <title>About Us | AI DIGITAL GURU</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root { --gold: #ffd700; --dark: #020c1b; --card-bg: #112240; --text-gray: #8892b0; }
+    body { background-color: var(--dark); font-family: 'Poppins', sans-serif; color: white; margin: 0; line-height: 1.6; }
+    
+    .about-header { padding: 80px 5%; text-align: center; background: linear-gradient(45deg, #020c1b, #0a192f); border-bottom: 2px solid var(--gold); }
+    .about-header h1 { color: var(--gold); font-size: clamp(2rem, 8vw, 3.5rem); margin-bottom: 10px; }
+
+    .profile-section { padding: 60px 10%; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: center; }
+    .profile-card { background: var(--card-bg); padding: 30px; border-radius: 20px; text-align: center; border: 1px solid #233554; max-width: 400px; width: 100%; }
+    .profile-card i { font-size: 80px; color: var(--gold); margin-bottom: 20px; }
+    .profile-card h2 { margin: 10px 0; color: #ccd6f6; }
+    .profile-card p { color: var(--gold); font-weight: bold; font-size: 1.1rem; }
+
+    .about-info { flex: 1; min-width: 300px; }
+    .about-info h2 { color: var(--gold); margin-bottom: 20px; border-left: 4px solid var(--gold); padding-left: 15px; }
+    .about-info p { color: var(--text-gray); font-size: 1.1rem; margin-bottom: 20px; }
+
+    .mission-vision { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px 10%; }
+    .mv-card { background: #172a45; padding: 30px; border-radius: 15px; text-align: center; transition: 0.3s; border: 1px solid transparent; }
+    .mv-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+    .mv-card i { font-size: 40px; color: var(--gold); margin-bottom: 15px; }
+    .mv-card h3 { color: #ccd6f6; }
+
+    @media (max-width: 768px) {
+        .profile-section { padding: 40px 5%; }
+        .about-info h2 { border-left: none; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 5px; }
+    }
+  </style>
 </head>
 <body>
 
-<header class="header">
-  <div class="logo">AI DIGITAL GURU</div>
+<header class="header" style="background: rgba(10, 25, 47, 0.95); position: sticky; top: 0; z-index: 1000; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #233554;">
+  <div class="logo"><img src="assets/img/logo.png" alt="AI DIGITAL GURU" style="height: 50px;" onerror="this.src='https://via.placeholder.com/150x50?text=AI+GURU'"></div>
   <nav id="nav">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="courses.html">Courses</a>
-    <a href="buy-sell.html">Buy & Sell</a>
-    <a href="certificate.html">Certificate</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html" style="color:white; text-decoration:none; margin:0 10px;">Home</a>
+    <a href="about.html" class="active" style="color:var(--gold); font-weight:bold; text-decoration:none; margin:0 10px;">About</a>
+    <a href="services.html" style="color:white; text-decoration:none; margin:0 10px;">Services</a>
+    <a href="courses.html" style="color:white; text-decoration:none; margin:0 10px;">Courses</a>
+    <a href="certificate.html" style="color:white; text-decoration:none; margin:0 10px;">Verification</a>
   </nav>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </header>
 
-<section class="section">
+<section class="about-header">
   <h1>About AI DIGITAL GURU</h1>
-  <p><b>Owner:</b> RK Bhardwaj</p>
-  <p>I provide IT services, training, software solutions, automation, and digital education.</p>
-
-  <div class="cards">
-    <div class="card">
-      <h3>Mission</h3>
-      <p>To provide affordable and quality IT education & services.</p>
-    </div>
-    <div class="card">
-      <h3>Vision</h3>
-      <p>To make every student digitally skilled.</p>
-    </div>
-  </div>
+  <p style="color: var(--text-gray);">Empowering Janjgir-Champa with Digital Excellence</p>
 </section>
 
-<footer class="footer">
-  <p>© AI DIGITAL GURU</p>
+<section class="profile-section">
+    <div class="profile-card">
+        <i class="fas fa-user-circle"></i>
+        <h2>RK Bhardwaj</h2>
+        <p>Founder & CEO</p>
+        <div style="color: var(--text-gray); font-size: 14px; margin-top: 10px;">
+            IT Solutions Expert | Digital Educator
+        </div>
+    </div>
+
+    <div class="about-info">
+        <h2>Our Identity</h2>
+        <p>AI DIGITAL GURU ek aisi sanstha hai jo modern technology aur practical education ko ek saath laati hai. Hum sirf software nahi banate, hum future IT experts ko train karte hain.</p>
+        <p>Humari services mein Web Development, App Solutions aur Professional IT Training shamil hain. Hum har student ko industry-ready banate hain taaki wo digital duniya mein apni jagah bana sakein.</p>
+    </div>
+</section>
+
+<section class="mission-vision">
+    <div class="mv-card">
+        <i class="fas fa-bullseye"></i>
+        <h3>Mission</h3>
+        <p style="color: var(--text-gray);">Har ek student tak sasti aur quality wali digital education pahunchana.</p>
+    </div>
+    <div class="mv-card">
+        <i class="fas fa-eye"></i>
+        <h3>Vision</h3>
+        <p style="color: var(--text-gray);">Chhattisgarh ko ek digital hub banana aur youth ko tech-independent banana.</p>
+    </div>
+</section>
+
+<footer class="footer" style="background: #020c1b; padding: 40px; text-align: center; border-top: 1px solid #233554;">
+  <p style="color: var(--gold); margin-bottom: 10px;">MSME REG: UDYAM-CG-06-0006341</p>
+  <p style="color: var(--text-gray);">© 2025 AI DIGITAL GURU | All Rights Reserved</p>
 </footer>
 
-<script src="assets/js/main.js"></script>
 </body>
 </html>

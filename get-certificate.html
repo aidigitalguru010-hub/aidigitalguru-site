@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Certificate | AI DIGITAL GURU</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .cert-box { max-width: 600px; margin: 50px auto; padding: 30px; background: #112240; border-radius: 15px; text-align: center; border: 1px solid #c5a059; }
+        #certificateCanvas { display: none; width: 100%; border: 2px solid #c5a059; margin-top: 20px; }
+        .input-style { width: 80%; padding: 12px; margin: 10px 0; border-radius: 5px; border: 1px solid #233554; background: #0a192f; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="cert-box">
+    <h2 style="color: var(--gold);">Download Your Certificate</h2>
+    <p style="color: #8892b0;">Enter your Roll Number to generate certificate</p>
+    
+    <input type="text" id="rollNo" class="input-style" placeholder="Ex: AIDG202501">
+    <button onclick="generateCert()" class="btn-premium btn-gold" style="width: 85%; border:none; padding:12px; cursor:pointer; font-weight:bold;">Generate PDF</button>
+
+    <canvas id="certificateCanvas" width="800" height="600"></canvas>
+    
+    <div id="downloadArea" style="display:none; margin-top:20px;">
+        <p style="color: #28a745;">Certificate Ready!</p>
+        <button onclick="downloadImage()" class="btn-premium btn-outline">Download Now</button>
+    </div>
+</div>
+
+<script>
+    // Ye aapka database ki tarah kaam karega (Shuruat mein)
+    const students = {
+        "AIDG001": { name: "RK Bhardwaj", course: "Python Masterclass", date: "15 Dec 2024" },
+        "AIDG002": { name: "Rahul Sahu", course: "Web Development", date: "10 Jan 2025" }
+    };
+
+    function generateCert() {
+        const roll = document.getElementById('rollNo').value;
+        const canvas = document.getElementById('certificateCanvas');
+        const ctx = canvas.getContext('2d');
+        const student = students[roll];
+
+        if (student) {
+            const img = new Image();
+            img.src = 'assets/img/cert-template.png'; // Aapka Template Path
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, 800, 600);
+                
+                // Student Name Likhein
+                ctx.font = 'bold 40px Arial';
+                ctx.fillStyle = '#000';
+                ctx.textAlign = 'center';
+                ctx.fillText(student.name, 400, 280); // 400 horizontal center, 280 vertical
+
+                // Course Name Likhein
+                ctx.font = '25px Arial';
+                ctx.fillText(student.course, 400, 350);
+
+                // Date Likhein
+                ctx.font = '20px Arial';
+                ctx.fillText("Issued on: " + student.date, 400, 500);
+
+                canvas.style.display = "block";
+                document.getElementById('downloadArea').style.display = "block";
+            };
+        } else {
+            alert("Roll Number not found! Please contact admin.");
+        }
+    }
+
+    function downloadImage() {
+        const canvas = document.getElementById('certificateCanvas');
+        const link = document.createElement('a');
+        link.download = 'AI_Digital_Guru_Certificate.png';
+        link.href = canvas.toDataURL();
+        link.click();
+    }
+</script>
+
+</body>
+</html>

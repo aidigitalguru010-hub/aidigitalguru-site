@@ -1,34 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Certificate Verification</title>
-<link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Verification | AI DIGITAL GURU</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        #res { margin-top: 20px; padding: 20px; border-radius: 12px; font-family: 'Poppins', sans-serif; }
+        .valid { border: 2px solid #FFD700; background: rgba(17, 34, 64, 0.8); color: #fff; box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
+        .invalid { border: 2px solid #ff4d4d; background: rgba(255, 77, 77, 0.1); color: #ff4d4d; }
+        .loading { color: #FFD700; font-style: italic; }
+        .download-btn {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #FFD700;
+            color: #0a192f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .download-btn:hover { background: #fff; transform: scale(1.05); }
+    </style>
 </head>
 <body>
 
-<h2>Verify Certificate</h2>
+    <div class="container" style="text-align: center; padding: 80px 20px;">
+        <h2 style="color: #FFD700; margin-bottom: 20px; font-size: 2.5rem;">Verify Certificate</h2>
+        <p style="color: #8892b0; margin-bottom: 30px;">Enter your Certificate ID to verify and download your official document.</p>
+        
+        <div class="search-box">
+            <input id="cid" type="text" placeholder="e.g. ADG-1001" 
+                   style="padding: 15px; width: 280px; border-radius: 5px; border: 1px solid #233554; background: #112240; color: white;">
+            <button onclick="verify()" 
+                    style="padding: 15px 30px; background: #FFD700; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; color: #0a192f;">
+                Verify & Download
+            </button>
+        </div>
 
-<input id="cid" placeholder="ADG-1001">
-<button onclick="verify()">Verify</button>
-
-<div id="res"></div>
+        <div id="res"></div>
+    </div>
 
 <script>
 const API="https://script.google.com/macros/s/AKfycby5c8X5Mw-Tc8RvpkDtga4MDf3cB-p7raS3WJ82WdImdhtxyn7zXtq5to9F7v5dWuAmsA/exec";
+const { jsPDF } = window.jspdf;
 
 function verify(){
-  fetch(API+"?id="+cid.value)
-  .then(r=>r.json())
-  .then(d=>{
-    if(d.status==="valid"){
-      res.innerHTML=`✔ VALID<br>
-      Name:${d.name}<br>
-      Course:${d.course}<br>
-      MSME: UDYAM-CG-06-0006341`;
-    } else {
-      res.innerHTML="❌ Invalid Certificate";
+    const res = document.getElementById("res");
+    const cid = document.getElementById("cid").value.trim();
+
+    if(!cid) {
+        alert("Please enter a Certificate ID");
+        return;
     }
-  });
+
+    res.innerHTML = "<p class='loading'>🔄 Locating your record in AI Database...</p>";
+
+    fetch(API+"?id="+cid)
+    .then(r => r.json())
+    .then(d => {
+        if(d.status === "valid"){
+            res.className = "valid";
+            res.innerHTML = `
+                <h3 style="margin:0; color:#FFD700;">✅ VERIFICATION SUCCESSFUL</h3>
+                <hr style="border:0; border-top:1px solid #FFD700; margin:15px 0;">
+                <p><strong>Student Name:</strong> ${d.name}</p>
+                <p><strong>Course:</strong> ${d.course}</p>
+                <p style="font-size: 0.9em;">MSME REG: UDYAM-CG-06-0006341</p>
+                <button class="download-btn" onclick="generatePDF('${d.name}', '${d.course}', '${cid}')">
+                    <i class="fas fa-file-pdf"></i> Download Official Certificate
+                </button>
+            `;
+        } else {
+            res.className = "invalid";
+            res.innerHTML = "<h3>❌ Record Not Found</h3><p>Please double check the ID or contact support.</p>";
+        }
+    })
+    .catch(err => {
+        res.innerHTML = "<p style='color:red;'>⚠️ Database Connection Error.</p>";
+    });
+}
+
+function generatePDF(name, course, id) {
+    const doc = new jsPDF({
+        orientation: "landscape",
+        unit: "mm",
+        format: "a4"
+    });
+
+    // 1. Background Decoration
+    doc.setFillColor(10, 25, 47); // Dark Blue
+    doc.rect(0, 0, 297, 210, 'F');
+    
+    // 2. Gold Border
+    doc.setDrawColor(255, 215, 0);
+    doc.setLineWidth(3);
+    doc.rect(10, 10, 277, 190);
+    doc.setLineWidth(1);
+    doc.rect(13, 13, 271, 184);
+
+    // 3. Header Logo Text
+    doc.setTextColor(255, 215, 0);
+    doc.setFontSize(45);
+    doc.text("AI DIGITAL GURU", 148, 45, { align: "center" });
+    
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(22);
+    doc.text("CERTIFICATE OF COMPLETION", 148, 65, { align: "center" });
+
+    // 4. Main Body Text
+    doc.setFontSize(16);
+    doc.text("This is to certify that", 148, 90, { align: "center" });
+    
+    doc.setTextColor(255, 215, 0);
+    doc.setFontSize(35);
+    doc.text(name.toUpperCase(), 148, 110, { align: "center" });
+
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(16);
+    doc.text("has successfully completed the professional course in", 148, 130, { align: "center" });
+    
+    doc.setFontSize(24);
+    doc.text(course, 148, 150, { align: "center" });
+
+    // 5. Footer Details
+    doc.setFontSize(12);
+    doc.text(`Certificate ID: ${id}`, 25, 180);
+    doc.text(`Date: ${new Date().toLocaleDateString()}`, 25, 188);
+    
+    doc.setTextColor(255, 215, 0);
+    doc.text("MSME REG: UDYAM-CG-06-0006341", 272, 180, { align: "right" });
+    doc.text("Authorized Signature", 272, 188, { align: "right" });
+
+    // 6. Save PDF
+    doc.save(`${name}_AI_Digital_Guru_Certificate.pdf`);
 }
 </script>
 

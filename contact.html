@@ -1,46 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Contact | AI DIGITAL GURU</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact AI DIGITAL GURU for IT Services and Training">
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | AI DIGITAL GURU</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --gold: #c5a059; --dark: #020c1b; --card: #112240; --text-gray: #8892b0; }
+        body { background: var(--dark); color: white; font-family: 'Inter', sans-serif; margin: 0; }
+        
+        .contact-hero { padding: 80px 5%; text-align: center; background: linear-gradient(rgba(2, 12, 27, 0.85), rgba(2, 12, 27, 0.85)), url('assets/img/contact-bg.jpg'); background-size: cover; background-position: center; border-bottom: 2px solid var(--gold); }
+        .contact-hero h1 { color: var(--gold); font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 10px; }
+        .contact-hero p { color: #ccd6f6; font-size: clamp(1rem, 4vw, 1.3rem); }
+
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 50px 5%; }
+        
+        .info-card { background: var(--card); padding: 30px; border-radius: 12px; border-left: 5px solid var(--gold); text-align: left; }
+        .info-card i { font-size: 35px; color: var(--gold); margin-bottom: 15px; }
+        .info-card h3 { color: #ccd6f6; margin-bottom: 10px; }
+        .info-card p, .info-card a { color: var(--text-gray); font-size: 15px; text-decoration: none; }
+        .info-card a:hover { color: var(--gold); }
+
+        .form-section { background: var(--card); padding: 40px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .form-section h2 { color: var(--gold); margin-bottom: 25px; text-align: center; }
+
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; color: #8892b0; font-size: 14px; }
+        .input-group input, .input-group textarea {
+            width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #233554;
+            background: #0a192f; color: white; outline: none; transition: 0.3s; box-sizing: border-box;
+        }
+        .input-group input:focus, .input-group textarea:focus { border-color: var(--gold); box-shadow: 0 0 10px rgba(197, 160, 89, 0.2); }
+        
+        .btn-submit {
+            width: 100%; padding: 15px; background: var(--gold); color: var(--dark);
+            border: none; border-radius: 8px; font-weight: bold; font-size: 16px;
+            cursor: pointer; transition: 0.3s; text-transform: uppercase;
+        }
+        .btn-submit:hover { background: white; transform: translateY(-3px); }
+
+        .map-section { padding: 50px 0; background-color: #0a192f; text-align: center; }
+        .map-section h2 { color: var(--gold); margin-bottom: 30px; font-size: 2rem; }
+        .map-frame { width: 90%; height: 400px; border: 0; border-radius: 15px; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+        
+        .social-links { text-align: center; padding: 30px 0; background: var(--dark); border-top: 1px solid #233554; }
+        .social-links a { color: var(--gold); font-size: 28px; margin: 0 15px; transition: 0.3s; }
+        .social-links a:hover { color: white; transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; padding: 30px 20px; }
+            .form-section { padding: 30px; }
+            .map-frame { height: 300px; width: 95%; }
+            .contact-hero { padding: 60px 20px; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="logo">AI DIGITAL GURU</div>
-  <nav id="nav">
-    <a href="index.html">Home</a>
-    <a href="services.html">Services</a>
-    <a href="courses.html">Courses</a>
-    <a href="contact.html" class="active">Contact</a>
-  </nav>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+<header class="header" style="background: rgba(10, 25, 47, 0.95); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #233554;">
+    <div class="logo"><img src="assets/img/logo.png" alt="AI DIGITAL GURU" style="height: 45px;" onerror="this.src='https://via.placeholder.com/150x50?text=AI+GURU'"></div>
+    <nav id="nav">
+      <a href="index.html" style="color:white; text-decoration:none; margin-left: 20px;">Home</a>
+      <a href="services.html" style="color:white; text-decoration:none; margin-left: 20px;">Services</a>
+      <a href="courses.html" style="color:white; text-decoration:none; margin-left: 20px;">Courses</a>
+      <a href="contact.html" class="active" style="color:var(--gold); font-weight:bold; text-decoration:none; margin-left: 20px;">Contact</a>
+    </nav>
 </header>
 
-<!-- CONTACT SECTION -->
-<section class="contact-section">
-  <h1>Contact Us</h1>
-  <p>Get in touch for IT Services, Courses & Support</p>
-
-  <div class="contact-card">
-    <input type="text" id="name" placeholder="Your Name">
-    <input type="tel" id="mobile" placeholder="Mobile Number">
-    <input type="email" id="email" placeholder="Email Address">
-    <textarea id="message" placeholder="Your Message"></textarea>
-
-    <button class="btn" onclick="submitForm()">Send Enquiry</button>
-  </div>
+<section class="contact-hero">
+    <h1>Connect With Us</h1>
+    <p>Your Gateway to Advanced IT Solutions & Digital Skills.</p>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <p>© AI DIGITAL GURU | Professional IT Services</p>
+<div class="contact-grid">
+    <div class="info-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Our Location</h3>
+        <p>Janjgir-Champa, Chhattisgarh</p>
+        <p>India</p>
+    </div>
+    <div class="info-card">
+        <i class="fas fa-phone-alt"></i>
+        <h3>Call Us</h3>
+        <p><a href="tel:+917047463566">+91 7047463566</a></p>
+        <p><a href="https://wa.me/917047463566" target="_blank">WhatsApp Chat</a></p>
+    </div>
+    <div class="info-card">
+        <i class="fas fa-envelope"></i>
+        <h3>Email Us</h3>
+        <p><a href="mailto:info@aidigitalguru.in">info@aidigitalguru.in</a></p>
+        <p>We typically respond within 24 hours.</p>
+    </div>
+</div>
+
+<section class="form-section" style="max-width: 700px; margin: 50px auto; padding: 40px;">
+    <h2>Send Us a Message</h2>
+    <form action="https://formspree.io/f/myzrjrzn" method="POST">
+        <div class="input-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Full Name" required>
+        </div>
+        <div class="input-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="_replyto" placeholder="your@email.com" required>
+        </div>
+        <div class="input-group">
+            <label for="phone">Mobile Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 7047463566">
+        </div>
+        <div class="input-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="6" placeholder="How can we assist you?" required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send Enquiry</button>
+    </form>
+</section>
+
+<section class="map-section">
+    <h2>Find Us on Map</h2>
+    <iframe class="map-frame" 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d118742.86872583271!2d82.56947700588667!3d22.01655079361833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a27f67756f7e801%3A0x6331a9829f7f02b3!2sJanjgir%2C%20Chhattisgarh!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" 
+        allowfullscreen="" loading="lazy"></iframe>
+</section>
+
+<footer class="footer" style="background: var(--dark); padding: 40px; text-align: center; border-top: 1px solid #233554;">
+    <div class="social-links" style="margin-bottom: 20px;">
+        <a href="https://youtube.com/@aidigitalguru?si=sWRwXdLesNvIj2E0" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.facebook.com/share/14Vbd1Sdkzs/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/guruaidigital?igsh=ZTl3emx4eTJscWxi" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/917047463566" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p style="color: var(--text-gray); font-size: 14px;">© 2025 AI DIGITAL GURU | UDYAM-CG-06-0006341</p>
 </footer>
 
-<script src="assets/js/main.js"></script>
 </body>
 </html>

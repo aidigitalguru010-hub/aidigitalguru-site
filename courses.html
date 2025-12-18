@@ -2,79 +2,105 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Courses & Training | AI DIGITAL GURU</title>
+  <title>IT Courses & Training | AI DIGITAL GURU</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Programming and IT Courses with Certification">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root { --gold: #ffd700; --dark: #0a192f; --card: #112240; }
+    body { background: var(--dark); color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; }
+    .header { background: rgba(10, 25, 47, 0.9); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--gold); position: sticky; top:0; z-index:100; }
+    .logo-img { height: 45px; }
+    nav a { color: white; text-decoration: none; margin-left: 20px; font-size: 14px; }
+    nav a.active { color: var(--gold); font-weight: bold; }
+    
+    .section-title { text-align: center; padding: 60px 20px 20px; }
+    .section-title h1 { color: var(--gold); font-size: 2.5rem; margin-bottom: 10px; }
+    
+    .course-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 40px 5%; }
+    .course-card { background: var(--card); border-radius: 12px; padding: 25px; border-left: 5px solid var(--gold); transition: 0.3s; position: relative; }
+    .course-card:hover { transform: translateY(-8px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+    
+    .course-card i { font-size: 40px; color: var(--gold); margin-bottom: 15px; }
+    .course-card h3 { margin: 10px 0; font-size: 1.4rem; color: #ccd6f6; }
+    .course-details { font-size: 13px; color: #8892b0; margin-bottom: 20px; line-height: 1.6; }
+    .course-meta { display: flex; justify-content: space-between; font-weight: bold; font-size: 12px; margin-bottom: 20px; border-top: 1px solid #233554; padding-top: 15px; }
+    
+    .btn-enroll { display: block; background: var(--gold); color: var(--dark); text-align: center; padding: 12px; text-decoration: none; border-radius: 6px; font-weight: bold; transition: 0.3s; }
+    .btn-enroll:hover { background: white; }
+    
+    .footer { text-align: center; padding: 40px; background: #020c1b; margin-top: 50px; border-top: 1px solid #112240; }
+  </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header class="header">
-  <div class="logo">AI DIGITAL GURU</div>
-  <nav id="nav">
+  <div class="logo"><img src="assets/img/logo.png" alt="AI DIGITAL GURU" class="logo-img"></div>
+  <nav>
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <a href="courses.html" class="active">Courses</a>
-    <a href="buy-sell.html">Buy & Sell</a>
-    <a href="certificate.html">Certificate</a>
+    <a href="certificate.html">Verification</a>
     <a href="contact.html">Contact</a>
   </nav>
-  <div class="menu-btn" onclick="toggleMenu()">☰</div>
 </header>
 
-<!-- COURSES -->
-<section class="section">
-  <h1>Courses & Training</h1>
-  <p>Practical computer courses with certificate</p>
+<div class="section-title">
+  <h1>Practical IT Training</h1>
+  <p>Learn Skills That Matter | MSME Verified Certification</p>
+</div>
 
-  <div class="cards">
+<div class="course-container">
 
-    <div class="card">
+    <div class="course-card">
+      <i class="fas fa-desktop"></i>
+      <h3>DCA (Diploma)</h3>
+      <p class="course-details">Fundamental Computer Applications, MS Office, Internet, and Tally Prime basics.</p>
+      <div class="course-meta">
+        <span><i class="far fa-clock"></i> 6 Months</span>
+        <span style="color: var(--gold);">₹4,500 Total</span>
+      </div>
+      <a href="https://wa.me/917047463566?text=I want to join DCA Course" class="btn-enroll">Enroll Now</a>
+    </div>
+
+    <div class="course-card">
+      <i class="fab fa-python"></i>
       <h3>Python Programming</h3>
-      <p>Beginner to Advanced<br>Certificate: YES</p>
-      <button class="btn" onclick="enrollNow()">Enroll Now</button>
+      <p class="course-details">Core Python, OOPS, Logic Building, and Automation Scripting with live projects.</p>
+      <div class="course-meta">
+        <span><i class="far fa-clock"></i> 3 Months</span>
+        <span style="color: var(--gold);">₹2,999 Total</span>
+      </div>
+      <a href="https://wa.me/917047463566?text=I want to join Python Programming" class="btn-enroll">Enroll Now</a>
     </div>
 
-    <div class="card">
-      <h3>C++ Programming</h3>
-      <p>Logic & Fundamentals<br>Certificate: YES</p>
-      <button class="btn" onclick="enrollNow()">Enroll Now</button>
-    </div>
-
-    <div class="card">
-      <h3>Java Programming</h3>
-      <p>Core Java Training<br>Certificate: YES</p>
-      <button class="btn" onclick="enrollNow()">Enroll Now</button>
-    </div>
-
-    <div class="card">
+    <div class="course-card">
+      <i class="fas fa-code"></i>
       <h3>HTML & Web Design</h3>
-      <p>Website Basics<br>Certificate: YES</p>
-      <button class="btn" onclick="enrollNow()">Enroll Now</button>
+      <p class="course-details">Master modern web UI with HTML5, CSS3, JavaScript, and Responsive Designing.</p>
+      <div class="course-meta">
+        <span><i class="far fa-clock"></i> 2 Months</span>
+        <span style="color: var(--gold);">₹2,499 Total</span>
+      </div>
+      <a href="https://wa.me/917047463566?text=I want to join Web Design" class="btn-enroll">Enroll Now</a>
     </div>
 
-    <div class="card">
-      <h3>Ethical Hacking (Basic)</h3>
-      <p>Cyber Security Fundamentals<br>Certificate: YES</p>
-      <button class="btn" onclick="enrollNow()">Enroll Now</button>
+    <div class="course-card">
+      <i class="fas fa-user-shield"></i>
+      <h3>Ethical Hacking</h3>
+      <p class="course-details">Cyber Security fundamentals, Network Vapt, and System Security basics.</p>
+      <div class="course-meta">
+        <span><i class="far fa-clock"></i> 2 Months</span>
+        <span style="color: var(--gold);">₹3,999 Total</span>
+      </div>
+      <a href="https://wa.me/917047463566?text=I want to join Ethical Hacking" class="btn-enroll">Enroll Now</a>
     </div>
 
-    <div class="card">
-      <h3>DCA (Diploma in Computer Application)</h3>
-      <p>6 Months Course<br>Certificate: YES</p>
-      <button class="btn" onclick="enrollNow()">Enroll Now</button>
-    </div>
+</div>
 
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer class="footer">
-  <p>© AI DIGITAL GURU | All Rights Reserved</p>
+  <p>© 2025 AI DIGITAL GURU | MSME: UDYAM-CG-06-0006341</p>
 </footer>
 
-<script src="assets/js/main.js"></script>
 </body>
 </html>
